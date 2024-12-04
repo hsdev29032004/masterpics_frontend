@@ -1,9 +1,9 @@
 'use client';
-
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePathname, useRouter } from 'next/navigation';
 import i18nConfig from '@/app/i18nConfig';
+import { Button, Switch, useColorScheme } from '@mui/material';
+import { useCallback, useEffect, useState } from 'react';
 
 export default function Home() {
     const { t, i18n } = useTranslation();
@@ -11,7 +11,10 @@ export default function Home() {
     const router = useRouter();
     const currentPathname = usePathname();
 
-    const handleChange = React.useCallback(
+    const { colorScheme, setColorScheme } = useColorScheme()
+    const [mounted, setMounted] = useState(false)
+
+    const handleChange = useCallback(
         (newLocale: string) => () => {
             const days = 30;
             const date = new Date();
@@ -30,19 +33,38 @@ export default function Home() {
         [currentLocale, currentPathname, router],
     );
 
+    useEffect(() => {
+        setMounted(true);
+    }, [])
+
+
+    if (!mounted) {
+        return null;
+    }
+
     return (
         <main className="flex min-h-screen flex-col items-center gap-10 p-24">
-            <span className="text-balance font-bold">{t('Login')}</span>
+            <span className="text-balance font-bold">{t('Home')}</span>
             <div className="flex flex-row gap-4">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={handleChange('en')}>
+                <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={handleChange('en')}
+                >
                     English
                 </button>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={handleChange('vi')}>
+                <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={handleChange('vi')}
+                >
                     Vietnamese
                 </button>
             </div>
+
+            <Button
+                onClick={() => setColorScheme(colorScheme === "light" ? "dark" : "light")}
+            >
+                {colorScheme == "light" ? t("Light") : t("Dark")}
+            </Button>
         </main>
     );
 }

@@ -1,4 +1,7 @@
 {
     "Helloworld": "Xin chào thế giới!",
-    "Login": "Đăng nhập"
+    "Home": "Trang chủ",
+    "Login": "Đăng nhập",
+    "Dark": "Tối",
+    "Light": "Sáng"
 }

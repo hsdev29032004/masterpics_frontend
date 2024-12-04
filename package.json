@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mui/material": "^6.1.9",
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@mui/material": "^5.16.7",
     "@mui/styled-engine-sc": "^6.1.9",
     "i18next": "^24.0.3",
     "i18next-resources-to-backend": "^1.2.1",

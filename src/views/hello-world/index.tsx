@@ -5,7 +5,7 @@ export default function Helloworld(){
     const { t } = useTranslation();
     return(
         <>
-            <h1>{t('Helloworld')}</h1>
+            <b>{t('Helloworld')}</b>
         </>
     )
 }

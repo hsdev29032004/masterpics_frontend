@@ -1,4 +1,7 @@
 {
     "Helloworld": "Hello world!",
-    "Login": "Login"
+    "Home": "Home",
+    "Login": "Login",
+    "Dark": "Dark",
+    "Light": "Light"
 }
