@@ -1,15 +1,13 @@
+import Register from "@/views/register/Register";
 import { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "Master Pics - Login",
-    description: "Đăng nhập hệ thống Master Pics!",
+    title: "Master Pics - Register",
+    description: "Đăng ký Master Pics!",
 };
 
-export default async function LoginPage() {
+export default async function RegisterPage() {
     return (
-        <Link href="/login">
-            Đăng ký
-        </Link>
+        <Register />
     )
 }

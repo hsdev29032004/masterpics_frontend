@@ -1,12 +1,16 @@
 {
-    "Dontyouhaveaccount": "Bạn chưa có tài khoản?",
-    "Helloworld": "Xin chào thế giới!",
-    "Home": "Trang chủ",
-    "Password": "Mật khẩu",
-    "Forgotpassword": "Quên mật khẩu",
-    "Login": "Đăng nhập",
     "Dark": "Tối",
+    "Dontyouhaveaccount": "Bạn chưa có tài khoản?",
+    "Doyouhaveaccount": "Bạn đã có tài khoản?",
+    "Forgotpassword": "Quên mật khẩu",
+    "Fullname": "Họ tên",
+    "Home": "Trang chủ",
     "Light": "Sáng",
+    "Login": "Đăng nhập",
+    "Loginnow": "Đăng nhập ngay",
     "Orcontinuewith": "Hoặc đăng nhập với",
-    "Regisnow": "Đăng ký ngay"
+    "Password": "Mật khẩu",
+    "Regisnow": "Đăng ký ngay",
+    "Register": "Đăng ký",
+    "Repassword": "Nhập lại mật khẩu"
 }

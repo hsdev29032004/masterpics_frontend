@@ -1,11 +1,16 @@
 {
     "Dark": "Dark",
     "Dontyouhaveaccount": "Don't you have account?",
+    "Doyouhaveaccount": "Bạn đã có tài khoản?",
     "Forgotpassword": "Forgot password",
+    "Fullname": "Fullname",
     "Home": "Home",
     "Light": "Light",
     "Login": "Login",
-    "Password": "Password",
+    "Loginnow": "Login now",
     "Orcontinuewith": "Or continue with",
-    "Regisnow": "Register now"
+    "Password": "Password",
+    "Regisnow": "Register now",
+    "Register": "Register",
+    "Repassword": "Nhập lại mật khẩu"
 }

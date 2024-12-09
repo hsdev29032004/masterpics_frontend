@@ -1,33 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
-    try {
-        // Lấy refresh_token từ header
-        const refreshToken = request.headers.get("Authorization")?.replace("Bearer ", "");
+    try {        
+        const body = await request.json();
 
-        if (!refreshToken) {
-            return NextResponse.json(
-                { status: "error", message: "Refresh token không tồn tại" },
-                { status: 401 }
-            );
-        }
-
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/refresh`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${refreshToken}`,
             },
+            body: JSON.stringify(body),
         });
-
         const result = await res.json();
-
-        if (result.status !== "success") {
-            return NextResponse.json(
-                { status: "error", message: result.message },
-                { status: 401 }
-            );
-        }
 
         const response = NextResponse.json({
             status: result.status,
@@ -41,21 +25,24 @@ export async function POST(request: NextRequest) {
             secure: true,
             path: "/",
             expires: new Date(Date.now() + 60 * 60 * 1000),
-        });
+        })
 
         response.cookies.set("refresh_token", result.data?.refresh_token, {
             httpOnly: true,
             sameSite: "none",
             secure: true,
             path: "/",
-            expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000), // 1 năm
-        });
+            expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
+        })
 
-        return response;
+        return response
     } catch (error) {
-        console.error("Lỗi refresh token:", error);
         return NextResponse.json(
-            { status: "error", message: "Lỗi hệ thống", data: null },
+            {
+                status: "error",
+                message: "Lỗi hệ thống",
+                data: null,
+            },
             { status: 500 }
         );
     }

@@ -1,4 +1,5 @@
 "use client"
+import { login } from "@/services/auth";
 import { Avatar, Box, Button, Chip, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -20,19 +21,9 @@ export default function Login() {
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        const res = await fetch("http://localhost:3000/api/auth/login", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email: formData.email,
-                password: formData.password,
-            }),
-        })
-        const result = await res.json()
+        e.preventDefault()
+
+        const result = await login(formData)
         if(result.status == "success"){ 
             router.push("/")
         }
