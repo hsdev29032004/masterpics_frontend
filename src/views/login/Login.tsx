@@ -10,7 +10,7 @@ export default function Login() {
     const router = useRouter()
 
     const [formData, setFormData] = useState({
-        email: 'admin@gmail.com',
+        email: 'user@gmail.com',
         password: 'masterpics',
     });
 
@@ -39,7 +39,16 @@ export default function Login() {
     };
 
     return (
-        <>
+        <Box
+            component="main"
+            sx={{
+                height: "100vh",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+            }}
+        >
             <h1 style={{ marginBottom: "10px" }}>
                 {t('Login')}
             </h1>
@@ -147,6 +156,6 @@ export default function Login() {
                 {t('Dontyouhaveaccount')}
                 <Link href="/register" style={{marginLeft: "5px"}}><b>{t('Regisnow')}</b></Link>
             </Typography>
-        </>
+        </Box>
     );
 }

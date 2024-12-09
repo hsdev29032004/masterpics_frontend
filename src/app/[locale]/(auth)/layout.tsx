@@ -1,5 +1,4 @@
 import React from 'react';
-import "./auth.css";
 import CheckLoginAuth from '@/libs/CheckLoginAuth.Wrapper';
 
 export default async function Layout({
@@ -11,5 +10,5 @@ export default async function Layout({
         <CheckLoginAuth>
             {children}
         </CheckLoginAuth>
-    );
+    )
 }
