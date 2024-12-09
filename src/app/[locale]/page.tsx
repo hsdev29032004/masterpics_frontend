@@ -5,6 +5,8 @@ import i18nConfig from '@/app/i18nConfig';
 import { Button, Switch, useColorScheme } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { _post, _post_nextserver } from '@/utils/request';
+import { logout } from '@/services/auth';
 
 export default function Home() {
     const { t, i18n } = useTranslation();
@@ -43,6 +45,13 @@ export default function Home() {
         return null;
     }
 
+    const handleLogout = async () => {
+        const result = await logout()
+        if(result.status == "success"){
+            router.push("/login")
+        }
+    }
+
     return (
         <main className="flex min-h-screen flex-col items-center gap-10 p-24">
             <span className="text-balance font-bold">{t('Home')}</span>
@@ -66,7 +75,10 @@ export default function Home() {
             >
                 {colorScheme == "light" ? t("Light") : t("Dark")}
             </Button>
-            <Link href={"/login"} >đăng nhập</Link>
+            <br/>
+            <Link href={"/login"} >{t('Login')}</Link>
+            <br/>
+            <Link onClick={handleLogout} href={"/#"} >{t('Logout')}</Link>
         </main>
     );
 }

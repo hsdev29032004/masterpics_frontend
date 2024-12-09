@@ -24,3 +24,9 @@ export const register = async (body: {email: string, password: string, repasswor
     const result: TResponse = await response.json()
     return result
 }
+
+export const logout = async (): Promise<TResponse> => {
+    const response = await _post_nextserver("/auth/logout")
+    const result: TResponse = await response.json()
+    return result
+}
