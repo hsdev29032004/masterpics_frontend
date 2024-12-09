@@ -1,4 +1,5 @@
 "use client"
+import useMessage from "@/hooks/useMessage";
 import { login, register } from "@/services/auth";
 import { Avatar, Box, Button, Chip, TextField, Typography } from "@mui/material";
 import Link from "next/link";
@@ -9,6 +10,7 @@ import { useTranslation } from "react-i18next";
 export default function Register() {
     const { t } = useTranslation()
     const router = useRouter()
+    const message = useMessage()
 
     const [formData, setFormData] = useState({
         email: '',
@@ -25,13 +27,15 @@ export default function Register() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         if(formData.password !== formData.repassword){
-            return alert("Mật khẩu nhập lại chưa đúng")
+            return message.showMessage("Mật khẩu nhập lại chưa đúng", "error")
         }
 
         const result = await register(formData)
-        console.log(result)
         if(result.status == "success"){ 
+            message.showMessage("Đăng ký thành công", "success")
             router.push("/login")
+        }else{
+            message.showMessage(result.message ,"error")
         }
     };
 

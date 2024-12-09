@@ -7,12 +7,14 @@ import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { _post, _post_nextserver } from '@/utils/request';
 import { logout } from '@/services/auth';
+import useMessage from '@/hooks/useMessage';
 
 export default function Home() {
     const { t, i18n } = useTranslation();
     const currentLocale = i18n.language;
     const router = useRouter();
     const currentPathname = usePathname();
+    const message = useMessage()
 
     const { colorScheme, setColorScheme } = useColorScheme()
     const [mounted, setMounted] = useState(false)
@@ -48,6 +50,7 @@ export default function Home() {
     const handleLogout = async () => {
         const result = await logout()
         if(result.status == "success"){
+            message.showMessage("Đăng xuất thành công", "success")
             router.push("/login")
         }
     }
@@ -79,6 +82,8 @@ export default function Home() {
             <Link href={"/login"} >{t('Login')}</Link>
             <br/>
             <Link onClick={handleLogout} href={"/#"} >{t('Logout')}</Link>
+            <br/>
+            <Button onClick={() => message.showMessage("Click", "success")}>Alert</Button>
         </main>
     );
 }
