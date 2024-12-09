@@ -1,7 +1,12 @@
 {
+    "Dontyouhaveaccount": "Bạn chưa có tài khoản?",
     "Helloworld": "Xin chào thế giới!",
     "Home": "Trang chủ",
+    "Password": "Mật khẩu",
+    "Forgotpassword": "Quên mật khẩu",
     "Login": "Đăng nhập",
     "Dark": "Tối",
-    "Light": "Sáng"
+    "Light": "Sáng",
+    "Orcontinuewith": "Hoặc đăng nhập với",
+    "Regisnow": "Đăng ký ngay"
 }

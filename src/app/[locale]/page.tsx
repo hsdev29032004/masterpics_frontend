@@ -4,6 +4,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import i18nConfig from '@/app/i18nConfig';
 import { Button, Switch, useColorScheme } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
+import Link from 'next/link';
 
 export default function Home() {
     const { t, i18n } = useTranslation();
@@ -65,6 +66,7 @@ export default function Home() {
             >
                 {colorScheme == "light" ? t("Light") : t("Dark")}
             </Button>
+            <Link href={"/login"} >đăng nhập</Link>
         </main>
     );
 }

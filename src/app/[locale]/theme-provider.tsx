@@ -20,7 +20,7 @@ const theme = experimental_extendTheme({
                     primary: "#000",
                 },
                 background: {
-                    default: "#ffffff",
+                    default: "#f0f2f5",
                 },
             },
         },
@@ -31,6 +31,28 @@ const theme = experimental_extendTheme({
                 },
                 background: {
                     default: "#181818",
+                },
+            },
+        },
+    },
+
+    components: {
+        MuiCssBaseline: {
+            styleOverrides: {
+                "*": {
+                    boxSizing: "border-box",
+                },
+                "[data-mui-color-scheme='dark'] body": {
+                    "& .MuiChip-root": {
+                        backgroundColor: "rgba(36, 37, 38, 0.4)",
+                        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.5)"
+                    },
+                },
+                "[data-mui-color-scheme='light'] body": {
+                    "& .MuiChip-root": {
+                        backgroundColor: "#fff",
+                        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
+                    },
                 },
             },
         },

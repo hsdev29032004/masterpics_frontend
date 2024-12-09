@@ -1,7 +1,11 @@
 {
-    "Helloworld": "Hello world!",
-    "Home": "Home",
-    "Login": "Login",
     "Dark": "Dark",
-    "Light": "Light"
+    "Dontyouhaveaccount": "Don't you have account?",
+    "Forgotpassword": "Forgot password",
+    "Home": "Home",
+    "Light": "Light",
+    "Login": "Login",
+    "Password": "Password",
+    "Orcontinuewith": "Or continue with",
+    "Regisnow": "Register now"
 }

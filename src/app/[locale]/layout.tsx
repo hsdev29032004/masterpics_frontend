@@ -15,7 +15,6 @@ export default async function Layout({ children, params: { locale } }: any) {
                     {children}
                 </ThemeProvider>
             </TranslationProvider>
-
         </>
     );
 }
