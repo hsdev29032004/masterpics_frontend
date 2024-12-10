@@ -1,4 +1,5 @@
 "use client"
+import useMessage from "@/hooks/useMessage";
 import { login } from "@/services/auth";
 import { Avatar, Box, Button, Chip, TextField, Typography } from "@mui/material";
 import Link from "next/link";
@@ -9,6 +10,7 @@ import { useTranslation } from "react-i18next";
 export default function Login() {
     const { t } = useTranslation()
     const router = useRouter()
+    const message = useMessage()
 
     const [formData, setFormData] = useState({
         email: 'user@gmail.com',
@@ -24,10 +26,14 @@ export default function Login() {
         e.preventDefault()
 
         const result = await login(formData)
-        if(result.status == "success"){ 
+        if (result.status == "success") {
             router.push("/")
         }
     };
+
+    const handleLoginGoogle = () => {
+        window.location.href = '/api/auth/google'
+    }
 
     return (
         <Box
@@ -87,6 +93,7 @@ export default function Login() {
                         marginTop: "5px"
                     }}
                     href="#"
+                    onClick={() => message.showMessage("Tính năng đã có ở project Meelow", "warning")}
                 >
                     {t('Forgotpassword')}
                 </Link>
@@ -106,6 +113,7 @@ export default function Login() {
                 }}
             >
                 <Chip
+                    onClick={handleLoginGoogle}
                     sx={{
                         display: "flex", flexDirection: "column", width: "100px", "& .MuiAvatar-root": {
                             margin: 0,
@@ -118,6 +126,7 @@ export default function Login() {
                 />
 
                 <Chip
+                    onClick={() => message.showMessage("Đăng nhập bằng google", "warning")}
                     sx={{
                         display: "flex", flexDirection: "column", width: "100px", "& .MuiAvatar-root": {
                             margin: 0,
@@ -126,11 +135,12 @@ export default function Login() {
                     avatar={<Avatar
                         src="https://static.vecteezy.com/system/resources/previews/018/930/698/non_2x/facebook-logo-facebook-icon-transparent-free-png.png"
                         alt="Facebook"
-                        style={{width: 37, height: 37}}
+                        style={{ width: 37, height: 37 }}
                     />}
                 />
 
                 <Chip
+                    onClick={() => message.showMessage("Đăng nhập bằng google", "warning")}
                     sx={{
                         display: "flex", flexDirection: "column", width: "100px", "& .MuiAvatar-root": {
                             margin: 0,
@@ -139,13 +149,13 @@ export default function Login() {
                     avatar={<Avatar
                         src="https://www.pngmart.com/files/23/Github-Logo-PNG.png"
                         alt="Github"
-                        style={{width: 28, height: 28}}
+                        style={{ width: 28, height: 28 }}
                     />}
                 />
             </Box>
-            <Typography sx={{marginTop: "15px"}}>
+            <Typography sx={{ marginTop: "15px" }}>
                 {t('Dontyouhaveaccount')}
-                <Link href="/register" style={{marginLeft: "5px"}}><b>{t('Regisnow')}</b></Link>
+                <Link href="/register" style={{ marginLeft: "5px" }}><b>{t('Regisnow')}</b></Link>
             </Typography>
         </Box>
     );
