@@ -28,6 +28,8 @@ export default function Login() {
         const result = await login(formData)
         if (result.status == "success") {
             router.push("/")
+        }else{
+            message.showMessage(result.message, "error")
         }
     };
 

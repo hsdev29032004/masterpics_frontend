@@ -38,7 +38,7 @@ export default function MessageWrapper({
                     onClose={handleCloseSnackbar}
                     severity={severity}
                     sx={{ width: "100%" }}
-                    variant="outlined"
+                    variant="filled"
                 >
                     {snackbarMessage}
                 </Alert>

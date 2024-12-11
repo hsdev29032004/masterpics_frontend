@@ -8,6 +8,9 @@ import Link from 'next/link';
 import { _post, _post_nextserver } from '@/utils/request';
 import { logout } from '@/services/auth';
 import useMessage from '@/hooks/useMessage';
+import { useDispatch, useSelector } from 'react-redux';
+import { decrement, increment } from '@/stores/counterSlice';
+import { RootState } from '@/stores/store';
 
 export default function Home() {
     const { t, i18n } = useTranslation();
@@ -15,6 +18,8 @@ export default function Home() {
     const router = useRouter();
     const currentPathname = usePathname();
     const message = useMessage()
+    const count = useSelector((state: RootState) => state.counter.value)
+    const dispatch = useDispatch()
 
     const { colorScheme, setColorScheme } = useColorScheme()
     const [mounted, setMounted] = useState(false)
@@ -49,7 +54,7 @@ export default function Home() {
 
     const handleLogout = async () => {
         const result = await logout()
-        if(result.status == "success"){
+        if (result.status == "success") {
             message.showMessage("Đăng xuất thành công", "success")
             router.push("/login")
         }
@@ -78,12 +83,18 @@ export default function Home() {
             >
                 {colorScheme == "light" ? t("Light") : t("Dark")}
             </Button>
-            <br/>
+            <br />
             <Link href={"/login"} >{t('Login')}</Link>
-            <br/>
+            <br />
             <Link onClick={handleLogout} href={"/#"} >{t('Logout')}</Link>
-            <br/>
+            <br />
             <Button onClick={() => message.showMessage("Click", "success")}>Alert</Button>
+            <br />
+            <div>
+                <h1>Counter: {count}</h1>
+                <button onClick={() => dispatch(increment())}>Increment</button>
+                <button onClick={() => dispatch(decrement())}>Decrement</button>
+            </div>
         </main>
     );
 }
