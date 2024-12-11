@@ -1,16 +1,19 @@
 "use client"
 import useMessage from "@/hooks/useMessage";
 import { login } from "@/services/auth";
+import { setUser } from "@/stores/userSlice";
 import { Avatar, Box, Button, Chip, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 
 export default function Login() {
     const { t } = useTranslation()
     const router = useRouter()
     const message = useMessage()
+    const dispatch = useDispatch()
 
     const [formData, setFormData] = useState({
         email: 'user@gmail.com',

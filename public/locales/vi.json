@@ -1,17 +1,23 @@
 {
-    "Dark": "Tối",
+    "dark": "Tối",
     "Dontyouhaveaccount": "Bạn chưa có tài khoản?",
     "Doyouhaveaccount": "Bạn đã có tài khoản?",
+    "en": "Tiếng Anh",
     "Forgotpassword": "Quên mật khẩu",
     "Fullname": "Họ tên",
     "Home": "Trang chủ",
-    "Light": "Sáng",
+    "Language": "Ngôn ngữ",
+    "light": "Sáng",
     "Login": "Đăng nhập",
     "Logout": "Đăng xuất",
     "Loginnow": "Đăng nhập ngay",
+    "Mode": "Chế độ",
     "Orcontinuewith": "Hoặc đăng nhập với",
     "Password": "Mật khẩu",
     "Regisnow": "Đăng ký ngay",
     "Register": "Đăng ký",
-    "Repassword": "Nhập lại mật khẩu"
+    "Repassword": "Nhập lại mật khẩu",
+    "Statistic": "Thống kê",
+    "System": "Hệ thống",
+    "vi": "Tiếng Việt"
 }

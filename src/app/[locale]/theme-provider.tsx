@@ -6,10 +6,10 @@ const theme = experimental_extendTheme({
     breakpoints: {
         values: {
             xs: 0,
-            sm: 576,
-            md: 968,
+            sm: 500,
+            md: 800,
             lg: 1200,
-            xl: 1536
+            xl: 1500
         },
     },
 
@@ -20,7 +20,7 @@ const theme = experimental_extendTheme({
                     primary: "#000",
                 },
                 background: {
-                    default: "#f0f2f5",
+                    default: "#eaeaea",
                 },
             },
         },
@@ -43,12 +43,41 @@ const theme = experimental_extendTheme({
                     boxSizing: "border-box",
                 },
                 "[data-mui-color-scheme='dark'] body": {
+                    "& .bg-main": {
+                        backgroundColor: "#181818"
+                    },
+                    "& .bg-second": {
+                        backgroundColor: "#242526"
+                    },
+                    "& .hover": {
+                        "&:hover": {
+                            backgroundColor: "#3a3a3a",
+                        },
+                    },
+                    "& .active": {
+                        backgroundColor: "#3a3a3a",
+                        // border: "2px solid"
+                    },
                     "& .MuiChip-root": {
                         backgroundColor: "rgba(36, 37, 38, 0.4)",
                         boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.5)"
                     },
                 },
                 "[data-mui-color-scheme='light'] body": {
+                    "& .bg-main": {
+                        backgroundColor: "#eaeaea"
+                    },
+                    "& .bg-second": {
+                        backgroundColor: "#ffffff"
+                    },
+                    "& .hover": {
+                        "&:hover": {
+                            backgroundColor: "#f1f1f1",
+                        },
+                    },
+                    "& .active": {
+                        backgroundColor: "#f1f1f1",
+                    },
                     "& .MuiChip-root": {
                         backgroundColor: "#fff",
                         boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
