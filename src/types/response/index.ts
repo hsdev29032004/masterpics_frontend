@@ -1,5 +1,5 @@
-export type TResponse = {
-    status: "error" | "success",
-    message: string,
-    data: any
+export type TResponse<T = any> = {
+    status: "error" | "success";
+    message: string;
+    data: T;
 }

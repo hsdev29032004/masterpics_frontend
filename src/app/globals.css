@@ -20,3 +20,11 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.break-word{
+  word-wrap: break-word;
+}
+
+.object-contain{
+  object-fit: contain;
+}

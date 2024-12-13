@@ -14,7 +14,8 @@ export const _get = async (path: string) => {
         headers: {
             "Content-Type": "application/json",
         },
-        credentials: 'include'
+        credentials: 'include',
+        cache: "no-store"
     })
     return response
 }

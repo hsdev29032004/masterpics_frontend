@@ -1,6 +1,8 @@
 import { Input } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export default function InputSearch(){
+    const { t } = useTranslation()
     return (
         <Input 
             className='bg-main' 
@@ -10,7 +12,7 @@ export default function InputSearch(){
                 padding: "2px 10px"
             }}
             disableUnderline 
-            placeholder="Nhập từ khóa"
+            placeholder={t('Enterkeyword')}
         />
     )
 }

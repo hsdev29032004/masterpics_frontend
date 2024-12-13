@@ -62,6 +62,9 @@ const theme = experimental_extendTheme({
                         backgroundColor: "rgba(36, 37, 38, 0.4)",
                         boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.5)"
                     },
+                    "& .MuiSvgIcon-root": {
+                        color: "#ddd"
+                    }
                 },
                 "[data-mui-color-scheme='light'] body": {
                     "& .bg-main": {
@@ -82,6 +85,11 @@ const theme = experimental_extendTheme({
                         backgroundColor: "#fff",
                         boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
                     },
+                    "& .post-action": {
+                        "& .MuiSvgIcon-root": {
+                            color: "#5d6673"
+                        }
+                    }
                 },
             },
         },
