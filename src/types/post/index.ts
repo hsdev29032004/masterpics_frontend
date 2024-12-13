@@ -12,6 +12,7 @@ export type TPost = {
     user: {
         _id: string,
         avatar: string,
-        fullName: string
+        fullName: string,
+        slug: string
     }
 }

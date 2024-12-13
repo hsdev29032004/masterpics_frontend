@@ -2,6 +2,7 @@ import CreatedAt from "@/components/post/CreatedAt"
 import PostAction from "@/components/post/PostAction";
 import { getDetailPostBySlug } from "@/services/post"
 import { Avatar, Box, Grid } from "@mui/material"
+import Link from "next/link";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
     const result = await getDetailPostBySlug(params.slug)
@@ -23,7 +24,7 @@ export default async function DetailPost({ params }: { params: { slug: string } 
     if (!result.data) return <>404</>
 
     return (
-        <div style={{marginTop: "20px"}}>
+        <div style={{ marginTop: "80px" }}>
             <Grid container>
                 <Grid xl={3} lg={2} md={2} sm={1} xs={0} />
 
@@ -34,21 +35,26 @@ export default async function DetailPost({ params }: { params: { slug: string } 
                 >
                     <Box>
                         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-                            <Avatar src={result.data?.user?.fullName} alt="" />
+                            <Link href={`/profile/${result.data?.user?.slug}`}>
+                                <Avatar src={result.data?.user?.fullName} alt="" />
+                            </Link>
                             <div>
-                                <b>{result.data?.user?.fullName}</b>
+                                <Link href={`/profile/${result.data?.user?.slug}`}>
+                                    <b>{result.data?.user?.fullName}</b>
+                                </Link>
                                 <CreatedAt createdAt={result.data?.createdAt} />
                             </div>
                         </div>
-                        <div style={{padding: "5px 15px"}}>
+                        <div style={{ padding: "5px 15px" }}>
                             <p>{result.data?.description}</p>
                         </div>
                         <div
-                            style={{ 
-                                display: "flex", 
-                                alignItems: "center", 
-                                justifyContent: "center", 
-                                margin: "5px 0" }}
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                margin: "5px 0"
+                            }}
                             className="bg-main"
                         >
                             <img
@@ -58,7 +64,7 @@ export default async function DetailPost({ params }: { params: { slug: string } 
                                 alt=""
                             />
                         </div>
-                        <PostAction price={result.data?.price}/>
+                        <PostAction price={result.data?.price} idPost={result.data?._id} slug={result.data?.slug} />
                     </Box>
                 </Grid>
 

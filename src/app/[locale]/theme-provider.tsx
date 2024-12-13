@@ -42,6 +42,9 @@ const theme = experimental_extendTheme({
                 "*": {
                     boxSizing: "border-box",
                 },
+                ".MuiSvgIcon-root": {
+                    cursor: "pointer"
+                },
                 "[data-mui-color-scheme='dark'] body": {
                     "& .bg-main": {
                         backgroundColor: "#181818"

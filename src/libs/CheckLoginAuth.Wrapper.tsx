@@ -1,7 +1,5 @@
 "use client";
-
-import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { checkAccessToken, refreshToken } from "@/services/auth";
 
 export default function CheckLoginAuth({
@@ -9,7 +7,6 @@ export default function CheckLoginAuth({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const pathname = usePathname()
     const router = useRouter()
     
     const checkLogin = async () => {
@@ -24,9 +21,7 @@ export default function CheckLoginAuth({
         }
     }
 
-    useEffect(() => {
-        checkLogin()
-    }, [pathname])
+    checkLogin()
 
     return <>{children}</>
 }

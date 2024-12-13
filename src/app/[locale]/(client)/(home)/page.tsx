@@ -8,10 +8,8 @@ export default function Home() {
     const user = useSelector((state: RootState) => state.user)
 
     return (
-        <main className="flex min-h-screen flex-col items-center gap-10 p-24">
+        <div style={{marginTop: "80px"}} className="flex min-h-screen flex-col items-center gap-10 p-24">
             <span className="text-balance font-bold">{t('Home')}</span>
-            <br />
-            {JSON.stringify(user)}
-        </main>
+        </div>
     );
 }

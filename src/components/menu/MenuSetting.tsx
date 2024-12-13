@@ -60,7 +60,7 @@ export default function MenuSetting({ anchorElUser, handleCloseUserMenu }: MenuS
                         minWidth: "300px"
                     }}
                 >
-                    <Avatar src={`${process.env.NEXT_PUBLIC_NEXTSERVER_DOMAIN}/images/${user.avatar}`} alt="" />
+                    <Avatar src={user.avatar && `${process.env.NEXT_PUBLIC_NEXTSERVER_DOMAIN}/images/${user.avatar}`} alt="" />
                     <div style={{ marginLeft: "5px" }}>
                         <p>{user.fullName}</p>
                         <p style={{ display: "flex", alignItems: "center" }}>

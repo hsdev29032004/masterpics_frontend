@@ -1,6 +1,4 @@
 "use client";
-import { useEffect } from "react";
-import { usePathname } from "next/navigation";
 import { checkAccessToken, refreshToken } from "@/services/auth";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/stores/userSlice";
@@ -10,26 +8,23 @@ export default function CheckLogin({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const pathname = usePathname()
     const dispatch = useDispatch()
-    
+
     const checkLogin = async () => {
         const result1 = await checkAccessToken()
         if (result1.status == "success") {
             dispatch(setUser(result1.data))
         } else {
             const result2 = await refreshToken()
-            if(result2.status == "success"){
+            if (result2.status == "success") {
                 dispatch(setUser(result2.data.user))
-            }else{
+            } else {
                 dispatch(setUser(null))
             }
         }
     }
 
-    useEffect(() => {
-        checkLogin()
-    }, [pathname])
+    checkLogin()
 
     return <>{children}</>
 }

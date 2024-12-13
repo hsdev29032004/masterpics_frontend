@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import MenuSetting from '@/components/menu/MenuSetting';
 import { usePathname } from 'next/navigation';
-import { Input, useColorScheme } from '@mui/material';
+import { Grid, Input, useColorScheme } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/stores/store';
 import InputSearch from '@/components/input/InputSearch';
@@ -52,18 +52,16 @@ export default function Header() {
     };
 
     return (
-        <header className='bg-second'>
+        <header className='bg-second' id='header'>
             <Container maxWidth="xl">
-                <Box
+                <Grid
+                    container
                     sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
                         minHeight: "60px",
                     }}
                 >
-                    {/* Box này 7 cột */}
-                    <Box
+                    <Grid
+                        xl={2} lg={3} md={3} sm={8} xs={8}
                         sx={{
                             display: "flex",
                             alignItems: "center"
@@ -76,14 +74,15 @@ export default function Header() {
                             <Avatar src={`${process.env.NEXT_PUBLIC_NEXTSERVER_DOMAIN}/images/logo.jpg`} sx={{ mr: 1 }} />
                         </Link>
                         <InputSearch />
-                    </Box>
+                    </Grid>
 
-                    {/* Box này 10 cột */}
-                    <Box
+                    <Grid
+                        xl={8} lg={6} md={6}
                         sx={{
                             display: { xs: 'none', md: 'flex' },
                             alignItems: "center",
-                            height: "60px"
+                            height: "60px",
+                            justifyContent: "center"
                         }}
                     >
                         {pages.map((link) => (
@@ -101,14 +100,15 @@ export default function Header() {
                                 {link.icon}
                             </Link>
                         ))}
-                    </Box>
+                    </Grid>
 
-                    {/* Box này 7 cột */}
-                    <Box
+                    <Grid
+                        xl={2} lg={3} md={3} sm={4} xs={4}
                         sx={{
                             display: "flex",
                             alignItems: "center",
-                            gap: 2
+                            gap: 2,
+                            justifyContent: "flex-end"
                         }}
                     >
                         <NotificationsIcon
@@ -119,16 +119,19 @@ export default function Header() {
                                 height: "40px",
                                 borderRadius: "50%"
                             }}
+                            sx={{
+                                display: { xs: 'none', md: 'flex' }
+                            }}
                         />
                         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                            <Avatar alt="" src={`${process.env.NEXT_PUBLIC_NEXTSERVER_DOMAIN}/images/${user.avatar}`} />
+                            <Avatar alt="" src={user.avatar &&`${process.env.NEXT_PUBLIC_NEXTSERVER_DOMAIN}/images/${user.avatar}`} />
                         </IconButton>
                         <MenuSetting
                             anchorElUser={anchorElUser}
                             handleCloseUserMenu={handleCloseUserMenu}
                         />
-                    </Box>
-                </Box>
+                    </Grid>
+                </Grid>
             </Container>
         </header>
     );

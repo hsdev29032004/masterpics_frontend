@@ -28,3 +28,9 @@ a {
 .object-contain{
   object-fit: contain;
 }
+
+#header{
+  position: fixed;
+  width: 100%;
+  z-index: 200;
+}
