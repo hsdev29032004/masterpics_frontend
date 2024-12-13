@@ -36,7 +36,11 @@ export default async function DetailPost({ params }: { params: { slug: string } 
                     <Box>
                         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
                             <Link href={`/profile/${result.data?.user?.slug}`}>
-                                <Avatar src={result.data?.user?.fullName} alt="" />
+                                <Avatar alt="" src={
+                                    result.data?.user?.avatar != "dfAvatar.jpg"
+                                        ? result.data.user.avatar
+                                        : `${process.env.NEXT_PUBLIC_NEXTSERVER_DOMAIN}/images/${result.data.user.avatar}`
+                                } />
                             </Link>
                             <div>
                                 <Link href={`/profile/${result.data?.user?.slug}`}>

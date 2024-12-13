@@ -124,7 +124,11 @@ export default function Header() {
                             }}
                         />
                         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                            <Avatar alt="" src={user.avatar &&`${process.env.NEXT_PUBLIC_NEXTSERVER_DOMAIN}/images/${user.avatar}`} />
+                            <Avatar alt="" src={
+                                user.avatar != "dfAvatar.jpg" 
+                                ? user.avatar
+                                : `${process.env.NEXT_PUBLIC_NEXTSERVER_DOMAIN}/images/${user.avatar}`
+                            } />
                         </IconButton>
                         <MenuSetting
                             anchorElUser={anchorElUser}

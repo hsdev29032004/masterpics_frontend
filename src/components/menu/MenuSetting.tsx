@@ -60,7 +60,11 @@ export default function MenuSetting({ anchorElUser, handleCloseUserMenu }: MenuS
                         minWidth: "300px"
                     }}
                 >
-                    <Avatar src={user.avatar && `${process.env.NEXT_PUBLIC_NEXTSERVER_DOMAIN}/images/${user.avatar}`} alt="" />
+                    <Avatar alt="" src={
+                        user.avatar != "dfAvatar.jpg"
+                            ? user.avatar
+                            : `${process.env.NEXT_PUBLIC_NEXTSERVER_DOMAIN}/images/${user.avatar}`
+                    } />
                     <div style={{ marginLeft: "5px" }}>
                         <p>{user.fullName}</p>
                         <p style={{ display: "flex", alignItems: "center" }}>
@@ -74,29 +78,29 @@ export default function MenuSetting({ anchorElUser, handleCloseUserMenu }: MenuS
             {user?._id != "" ? (
                 [
                     <MenuItem style={{ display: "flex", justifyContent: "space-between" }} key="language" onClick={() => changeLocale(i18n.language, currentPathname, router)}>
-                        <div style={{ display: "flex", alignItems: "center"}}>
-                            <LanguageIcon style={{marginRight: "5px"}}/>
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                            <LanguageIcon style={{ marginRight: "5px" }} />
                             <span>{t('Language')}:</span>
                         </div>
                         <span>{t(i18n.language)}</span>
                     </MenuItem>,
                     <MenuItem style={{ display: "flex", justifyContent: "space-between" }} key="mode" onClick={() => setColorScheme(colorScheme === "light" ? "dark" : "light")}>
-                        <div style={{ display: "flex", alignItems: "center"}}>
-                            {colorScheme == "dark" ? <DarkModeIcon style={{marginRight: "5px"}}/> : <LightModeIcon style={{marginRight: "5px"}}/>}
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                            {colorScheme == "dark" ? <DarkModeIcon style={{ marginRight: "5px" }} /> : <LightModeIcon style={{ marginRight: "5px" }} />}
                             <span>{t('Mode')}:</span>
                         </div>
                         <span>{t(colorScheme || "System")}</span>
                     </MenuItem>,
                     <MenuItem key="statistic">
-                        <StackedLineChartIcon style={{marginRight: "5px"}}/>
+                        <StackedLineChartIcon style={{ marginRight: "5px" }} />
                         <Typography>{t("Statistic")}</Typography>
                     </MenuItem>,
                     <MenuItem key="deposit">
-                        <AddBusinessIcon style={{marginRight: "5px"}}/>
+                        <AddBusinessIcon style={{ marginRight: "5px" }} />
                         <Typography>{t('Deposit')}</Typography>
                     </MenuItem>,
                     <MenuItem key="logout" onClick={handleLogout}>
-                        <LogoutIcon style={{marginRight: "5px"}}/>
+                        <LogoutIcon style={{ marginRight: "5px" }} />
                         <Typography>{t('Logout')}</Typography>
                     </MenuItem>
                 ]
