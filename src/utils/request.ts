@@ -8,12 +8,18 @@ interface TOption{
     headers?: HeadersInit
 }
 
-export const _get = async (path: string) => {
+export const _get = async (path: string, accessToken?: string) => {
+    const headers: HeadersInit = {
+        "Content-Type": "application/json",
+    }
+
+    if (accessToken) {
+        headers["Authorization"] = `Bearer ${accessToken}`
+    }
+
     const response = await fetch(API_BACKEND + path, {
         method: 'GET',
-        headers: {
-            "Content-Type": "application/json",
-        },
+        headers,
         credentials: 'include',
         cache: "no-store"
     })

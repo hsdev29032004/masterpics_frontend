@@ -16,3 +16,9 @@ export type TPost = {
         slug: string
     }
 }
+
+export type TEditPost = {
+    title: string,
+    description: string,
+    price: number
+}

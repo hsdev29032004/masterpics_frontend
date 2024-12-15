@@ -6,51 +6,44 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useColorScheme } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { TFavorite } from '@/types/favorite';
-import { getListFavorite, likePost } from '@/services/favorite';
+import { likePost } from '@/services/favorite';
 import { copy } from '@/helpers/copy';
 import useMessage from '@/hooks/useMessage';
+import { TPost } from '@/types/post';
+import { refreshToken } from '@/services/auth';
 
-export default function PostAction({ price, idPost, slug, listFavor }: { price: number, idPost: string, slug: string, listFavor?: TFavorite }) {
+export default function PostAction({ post, listFavor, price }: { post: TPost, listFavor?: TFavorite, price: string }) {
     const { colorScheme } = useColorScheme()
-
-    const [mount, setMound] = useState<boolean>(false)
-    const [liked, setLiked] = useState<boolean>(false)
-    const [favorites, setFavorites] = useState<TFavorite | undefined | null>(listFavor)
+    const [hydratedScheme, setHydratedScheme] = useState<string | undefined>(undefined)
+    const [liked, setLiked] = useState<boolean | undefined>(listFavor?.some(favor => favor.post?._id === post._id))
     const message = useMessage()
 
-    const fetchFavor = async () => {
-        const result = await getListFavorite()
-        setFavorites(result.data)
-    }
-
     useEffect(() => {
-        if (favorites?.some(favor => favor.post?._id === idPost)) {
-            setLiked(true);
-        }
-    }, [favorites])
-
-    useEffect(() => {
-        if (!favorites) {
-            fetchFavor()
-        }
-        setMound(true)
-    }, [])
+        setHydratedScheme(colorScheme)
+    }, [colorScheme])
 
     const handleLike = async () => {
         setLiked(prev => !prev)
-        await likePost(idPost)
+        const result1 = await likePost(post._id)
+        if(result1.status == "error"){
+            const result2 = await refreshToken()
+            if(result2.status == "success"){
+                await likePost(post._id)
+            }else{
+                message.showMessage("Bạn chưa đăng nhập", "error")
+                setLiked(prev => !prev)
+            }
+        }
     }
 
     const handleShare = async () => {
-        copy(`${process.env.NEXT_PUBLIC_NEXTSERVER_URL}/post/${slug}`, message)
+        copy(`${process.env.NEXT_PUBLIC_NEXTSERVER_URL}/post/${post.slug}`, message)
     }
-
-    if (!mount) return null
 
     return (
         <div
             style={{
-                borderTop: colorScheme == "dark" ? "2px solid #3f3f3f" : "2px solid #ddd",
+                borderTop: hydratedScheme === "dark" ? "2px solid #3f3f3f" : "2px solid #ddd",
                 marginTop: "10px",
                 alignItems: "center",
                 padding: "7px 20px",
@@ -73,7 +66,7 @@ export default function PostAction({ price, idPost, slug, listFavor }: { price: 
             </div>
             <div style={{ display: "flex", alignItems: "center" }}>
                 <ShoppingCartIcon sx={{ fontSize: "25px" }} />
-                <p>{new Intl.NumberFormat().format(price)}đ</p>
+                <p>{price}đ</p>
             </div>
         </div>
     )

@@ -46,6 +46,17 @@ const theme = experimental_extendTheme({
                     cursor: "pointer"
                 },
                 "[data-mui-color-scheme='dark'] body": {
+                    "&::-webkit-scrollbar": {
+                        width: "8px",
+                        // height: "8px",
+                    },
+                    "&::-webkit-scrollbar-track": {
+                        background: "linear-gradient(to bottom, #242526 0%, #242526 60px, transparent 60px)",
+                    },
+                    "&::-webkit-scrollbar-thumb": {
+                        backgroundColor: "#ddd",
+                        borderRadius: "4px",
+                    },
                     "& .bg-main": {
                         backgroundColor: "#181818"
                     },
@@ -70,6 +81,17 @@ const theme = experimental_extendTheme({
                     }
                 },
                 "[data-mui-color-scheme='light'] body": {
+                    "&::-webkit-scrollbar": {
+                        width: "8px",
+                        // height: "8px",
+                    },
+                    "&::-webkit-scrollbar-track": {
+                        background: "linear-gradient(to bottom, #fff 0%, #fff 60px, transparent 60px)",
+                    },
+                    "&::-webkit-scrollbar-thumb": {
+                        backgroundColor: "red",
+                        borderRadius: "4px",
+                    },
                     "& .bg-main": {
                         backgroundColor: "#eaeaea"
                     },
