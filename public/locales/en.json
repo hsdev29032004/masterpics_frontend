@@ -1,5 +1,6 @@
 {
     "Areyousuretodelete": "Are you sure to delete?",
+    "Titlemodalbuypost": "Sure to purchase this picture for",
     "Cancel": "Cancel",
     "dark": "Dark",
     "Dontyouhaveaccount": "Don't you have account?",
@@ -8,6 +9,7 @@
     "Deposit": "Deposit",
     "Delete": "Delete",
     "Description": "Description",
+    "Descriptionmodalbuypost": "After purchase, the text @Masterpics will disappear",
     "en": "English",
     "Edit": "Edit",
     "Enterkeyword": "Enter keyword",
@@ -26,6 +28,7 @@
     "Orcontinuewith": "Or continue with",
     "Password": "Password",
     "Price": "Price",
+    "Purchase": "Purchase",
     "Regisnow": "Register now",
     "Register": "Register",
     "Repassword": "Nhập lại mật khẩu",

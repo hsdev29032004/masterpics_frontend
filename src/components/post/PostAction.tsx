@@ -2,7 +2,6 @@
 import ShareIcon from '@mui/icons-material/Share';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useColorScheme } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { TFavorite } from '@/types/favorite';
@@ -11,6 +10,7 @@ import { copy } from '@/helpers/copy';
 import useMessage from '@/hooks/useMessage';
 import { TPost } from '@/types/post';
 import { refreshToken } from '@/services/auth';
+import ModalBuy from './ModalBuy';
 
 export default function PostAction({ post, listFavor, price }: { post: TPost, listFavor?: TFavorite, price: string }) {
     const { colorScheme } = useColorScheme()
@@ -64,10 +64,7 @@ export default function PostAction({ post, listFavor, price }: { post: TPost, li
                     sx={{ fontSize: "30px" }}
                 />
             </div>
-            <div style={{ display: "flex", alignItems: "center" }}>
-                <ShoppingCartIcon sx={{ fontSize: "25px" }} />
-                <p>{price}đ</p>
-            </div>
+            <ModalBuy price={price} post={post}/>
         </div>
     )
 }

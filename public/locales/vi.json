@@ -1,5 +1,6 @@
 {
     "Areyousuretodelete": "Bạn có chắc chắn muốn xóa?",
+    "Titlemodalbuypost": "Bạn có chắc muốn mua bức hình này với giá",
     "Cancel": "Hủy bỏ",
     "dark": "Tối",
     "Dontyouhaveaccount": "Bạn chưa có tài khoản?",
@@ -8,6 +9,7 @@
     "Deposit": "Nạp tiền",
     "Delete": "Xóa",
     "Description": "Description",
+    "Descriptionmodalbuypost": "Sau khi mua, dòng chữ @Masterpics sẽ biến mất",
     "en": "Tiếng Anh",
     "Edit": "Chỉnh sửa",
     "Enterkeyword": "Nhập từ khóa",
@@ -26,6 +28,7 @@
     "Orcontinuewith": "Hoặc đăng nhập với",
     "Password": "Mật khẩu",
     "Price": "Giá",
+    "Purchase": "Mua ngay",
     "Regisnow": "Đăng ký ngay",
     "Register": "Đăng ký",
     "Repassword": "Nhập lại mật khẩu",
