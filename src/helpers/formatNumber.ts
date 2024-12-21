@@ -1,4 +1,4 @@
-export const formatNumber = (num: number) => {
+export const formatNumber1 = (num: number) => {
     if (num < 1e3) {
         return Math.floor(num);
     } else if (num >= 1e3 && num < 1e6) {
@@ -8,4 +8,25 @@ export const formatNumber = (num: number) => {
     } else if (num >= 1e9) {
         return Math.floor(num / 1e9 * 10) / 10 + 'B';
     }
+}
+
+export function formatNumber2(num: number): string {
+    let [integerPart, decimalPart] = num.toString().split(".");
+    let result = "";
+    let count = 0;
+
+    for (let i = integerPart.length - 1; i >= 0; i--) {
+        result = integerPart[i] + result;
+        count++;
+        if (count === 3 && i !== 0) {
+            result = "," + result;
+            count = 0;
+        }
+    }
+
+    if (decimalPart) {
+        result += "." + decimalPart;
+    }
+
+    return result;
 }
