@@ -2,6 +2,7 @@
 import { checkAccessToken, refreshToken } from "@/services/auth";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/stores/userSlice";
+import { useRouter } from "next/navigation";
 
 export default function CheckLogin({
     children,
@@ -9,7 +10,7 @@ export default function CheckLogin({
     children: React.ReactNode;
 }>) {
     const dispatch = useDispatch()
-
+    const router = useRouter()
     const checkLogin = async () => {
         const result1 = await checkAccessToken()
         if (result1.status == "success") {
@@ -18,6 +19,7 @@ export default function CheckLogin({
             const result2 = await refreshToken()
             if (result2.status == "success") {
                 dispatch(setUser(result2.data.user))
+                router.refresh()
             } else {
                 dispatch(setUser(null))
             }

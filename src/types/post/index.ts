@@ -1,3 +1,8 @@
+export type TListPost = {
+    posts: [TPost],
+    totalPage: 1
+}
+
 export type TPost = {
     _id: string,
     title: string,

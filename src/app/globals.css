@@ -35,3 +35,30 @@ a {
   width: 100%;
   z-index: 200;
 }
+
+.bought{
+  padding: 10px;
+  border-radius: 10px;
+  position: fixed;
+  top: 70px;
+  right: 30px;
+  width: 31%;
+}
+
+.container {
+  padding: 0px 30px
+}
+
+@media screen and (max-width: 800px) {
+  .bought{
+    position: static;
+    width: 100%;
+    order: 1;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    padding: 0px
+  }
+}

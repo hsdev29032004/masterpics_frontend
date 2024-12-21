@@ -30,7 +30,7 @@ export default function Login() {
 
         const result = await login(formData)
         if (result.status == "success") {
-            router.push("/")
+            window.location.href = "/"
         }else{
             message.showMessage(result.message, "error")
         }

@@ -1,4 +1,4 @@
-import { TEditPost, TPost } from "@/types/post"
+import { TEditPost, TListPost, TPost } from "@/types/post"
 import { TResponse } from "@/types/response"
 import { _delete, _get, _patch, _post } from "@/utils/request"
 import { refreshToken } from "./auth"
@@ -12,11 +12,11 @@ export const getDetailPostBySlug = async (slug: string): Promise<TResponse<TPost
 export const editPost = async (idPost: string, data: TEditPost): Promise<TResponse<TPost | undefined>> => {
     const response = await _patch(`/posts/${idPost}`, data)
     const result: TResponse<TPost> = await response.json()
-    if(response.status === 401){
+    if (response.status === 401) {
         const refresh = await refreshToken()
-        if(refresh.status == "success"){
+        if (refresh.status == "success") {
             return editPost(idPost, data)
-        }else{
+        } else {
             return refresh
         }
     }
@@ -26,13 +26,19 @@ export const editPost = async (idPost: string, data: TEditPost): Promise<TRespon
 export const deletePost = async (idPost: string): Promise<TResponse<TPost | undefined>> => {
     const response = await _delete(`/posts/${idPost}`)
     const result: TResponse<TPost> = await response.json()
-    if(response.status === 401){
+    if (response.status === 401) {
         const refresh = await refreshToken()
-        if(refresh.status == "success"){
+        if (refresh.status == "success") {
             return deletePost(idPost)
-        }else{
+        } else {
             return refresh
         }
     }
+    return result
+}
+
+export const getListPost = async (page: number = 1): Promise<TResponse<TListPost>> => {
+    const response = await _get(`/posts?page=${page}`)
+    const result: TResponse<TListPost> = await response.json()
     return result
 }

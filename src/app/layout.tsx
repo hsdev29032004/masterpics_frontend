@@ -23,6 +23,16 @@ export default function RootLayout({
     <html lang={locale}>
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== "undefined") {
+                window.history.scrollRestoration = "manual";
+                window.scrollTo(0, 0);
+              }
+            `
+          }}
+        />
       </head>
       <body>
         <InitColorSchemeScript defaultMode="system" />

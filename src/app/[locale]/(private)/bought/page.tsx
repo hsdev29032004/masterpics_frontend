@@ -6,7 +6,7 @@ export default function Home() {
 
     return (
         <main className="flex min-h-screen flex-col items-center gap-10 p-24">
-            <span className="text-balance font-bold">{t('Buyed')}</span>
+            <span className="text-balance font-bold">{t('Bought')}</span>
             <br />
         </main>
     )

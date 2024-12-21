@@ -36,7 +36,7 @@ export default function Header() {
         { href: "/", icon: <CottageIcon sx={{ color: initialized && colorScheme == "light" ? "#E813B6" : null }} /> },
         { href: "/follow", icon: <PeopleAltIcon sx={{ color: initialized && colorScheme == "light" ? "#5D70EA" : null }} /> },
         { href: "/favorite", icon: <FavoriteIcon sx={{ color: initialized && colorScheme == "light" ? "#E8133D" : null }} /> },
-        { href: "/buyed", icon: <ImageIcon sx={{ color: initialized && colorScheme == "light" ? "#7AE813" : null }} /> },
+        { href: "/bought", icon: <ImageIcon sx={{ color: initialized && colorScheme == "light" ? "#7AE813" : null }} /> },
     ]
 
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {

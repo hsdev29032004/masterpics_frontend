@@ -13,6 +13,7 @@ import { Avatar, Menu, MenuItem, Typography, useColorScheme } from "@mui/materia
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+import { formatNumber2 } from "@/helpers/formatNumber";
 
 interface MenuSettingProps {
     anchorElUser: HTMLElement | null
@@ -68,7 +69,7 @@ export default function MenuSetting({ anchorElUser, handleCloseUserMenu }: MenuS
                     <div style={{ marginLeft: "5px" }}>
                         <p>{user.fullName}</p>
                         <p style={{ display: "flex", alignItems: "center" }}>
-                            Số dư: {new Intl.NumberFormat().format(user.money)}đ
+                            Số dư: {formatNumber2(user.money)}đ
                         </p>
                     </div>
                 </div>
