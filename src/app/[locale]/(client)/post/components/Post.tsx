@@ -1,11 +1,12 @@
+"use client"
 import { useState } from "react";
-import { Avatar, Box, Dialog, DialogContent } from "@mui/material";
+import { Avatar, Box } from "@mui/material";
 import Link from "next/link";
 import CreatedAt from "./CreatedAt";
 import PostAction from "./PostAction";
 import BtnMore from "./PostMenu";
 import { TPost } from "@/types/post";
-import ShowPic from "../dialog/ShowPic";
+import ShowPic from "../../../../../components/dialog/ShowPic";
 
 export default function Post({
     result,

@@ -7,7 +7,7 @@ import jwt, { JwtPayload } from "jsonwebtoken"
 import { Grid } from '@mui/material';
 import { getPurchased } from '@/services/payment';
 import { TListPayment } from '@/types/payment';
-import PurchasedCard from '@/components/home/PurchasedCard';
+import PurchasedCard from '@/app/[locale]/(client)/(home)/components/PurchasedCard';
 
 export const metadata: Metadata = {
     title: "Master Pics - Home",

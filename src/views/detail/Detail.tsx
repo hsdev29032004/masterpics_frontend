@@ -3,7 +3,7 @@ import { Grid } from "@mui/material";
 import { cookies } from "next/headers";
 import jwt, { JwtPayload } from "jsonwebtoken"
 import { getListFavorite } from "@/services/favorite";
-import Post from "@/components/post/Post";
+import Post from "@/app/[locale]/(client)/post/components/Post";
 import { formatNumber2 } from "@/helpers/formatNumber";
 
 export default async function Detail({params}: {params: {slug: string}}) {

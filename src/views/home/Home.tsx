@@ -1,11 +1,11 @@
 "use client"
-import Post from "@/components/post/Post"
+import Post from "@/app/[locale]/(client)/post/components/Post"
 import { formatNumber2 } from "@/helpers/formatNumber"
 import { TListPost, TPost } from "@/types/post"
 import { Grid } from "@mui/material"
 import { useState, useEffect, useRef } from "react"
 import { getListPost } from "@/services/post"
-import PostSkeleton from "@/components/post/Skeleton"
+import PostSkeleton from "@/app/[locale]/(client)/post/components/Skeleton"
 
 export default function Home({
     data,

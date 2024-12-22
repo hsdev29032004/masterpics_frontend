@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ShowPic from "../dialog/ShowPic";
+import ShowPic from "../../../../../components/dialog/ShowPic";
 
 export default function PurchasedPic({ image }: { image: string }) {
     const [isDialogOpen, setIsDialogOpen] = useState(false)
@@ -28,6 +28,7 @@ export default function PurchasedPic({ image }: { image: string }) {
                             width: "100%",
                             height: "100%",
                             objectFit: "cover",
+                            cursor: "pointer"
                         }}
                         onClick={() => setIsDialogOpen(true)}
                     />
