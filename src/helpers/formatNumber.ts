@@ -11,6 +11,8 @@ export const formatNumber1 = (num: number) => {
 }
 
 export function formatNumber2(num: number): string {
+    if(isNaN(num)) return ""
+
     let [integerPart, decimalPart] = num.toString().split(".");
     let result = "";
     let count = 0;
