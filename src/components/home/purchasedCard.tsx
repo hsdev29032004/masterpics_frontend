@@ -1,45 +1,23 @@
+"use client"
 import { TListPayment } from "@/types/payment";
 import { Button } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import PurchasedPic from "./PurchasePic";
 
 export default function PurchasedCard({ purchasedPic }: { purchasedPic: TListPayment | undefined }) {
     const hasPurchasedPics = Array.isArray(purchasedPic) && purchasedPic.length > 0
+    const { t } = useTranslation()
 
     return (
         <div className='bg-second bought'>
-            <b style={{ textAlign: "center", display: "block" }}>Ảnh đã mua</b>
+            <b style={{ textAlign: "center", display: "block", fontSize: "25px" }}>{t('Purchasedpics')}</b>
             <div
                 style={{ display: "flex", flexWrap: "wrap", gap: "2" }}
             >
                 {hasPurchasedPics ? (
                     purchasedPic.slice(0, 9).map((item) => (
-                        <>
-                            <div
-                                key={item._id}
-                                style={{
-                                    width: "33.333%",
-                                    padding: "3px"
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        width: "100%",
-                                        aspectRatio: "1/1",
-                                        overflow: "hidden",
-                                        borderRadius: "4px",
-                                    }}
-                                >
-                                    <img
-                                        src={item.image}
-                                        alt=""
-                                        style={{
-                                            width: "100%",
-                                            height: "100%",
-                                            objectFit: "cover",
-                                        }}
-                                    />
-                                </div>
-                            </div>
-                        </>
+                        <PurchasedPic image={item.image}/>
                     ))
                 ) : (
                     <div style={{ display: "flex", justifyContent: "center", width: "100%", margin: "15px 0" }}>
@@ -58,7 +36,7 @@ export default function PurchasedCard({ purchasedPic }: { purchasedPic: TListPay
                     variant="contained"
                     color="primary"
                 >
-                    Xem tất cả ảnh đã mua
+                    {t('Seeallpurchasedpics')}
                 </Button>
             </div>
         </div>

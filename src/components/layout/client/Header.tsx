@@ -52,8 +52,8 @@ export default function Header() {
     };
 
     return (
-        <header className='bg-second' id='header'>
-            <Container maxWidth="xl">
+        <header className='bg-second' id='header' style={{padding: "0 30px"}}>
+            {/* <Container maxWidth="xl"> */}
                 <Grid
                     container
                     sx={{
@@ -136,7 +136,7 @@ export default function Header() {
                         />
                     </Grid>
                 </Grid>
-            </Container>
+            {/* </Container> */}
         </header>
     );
 }
