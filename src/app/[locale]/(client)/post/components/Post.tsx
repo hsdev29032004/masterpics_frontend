@@ -17,10 +17,9 @@ export default function Post({
     result: TPost;
     decodedToken: any;
     formattedPrice: string;
-    listFavor?: any;
+    listFavor: any;
 }) {
     const [isDialogOpen, setIsDialogOpen] = useState(false)
-
     return (
         <>
             {result?.user?._id == decodedToken?._id && <BtnMore post={result} />}
@@ -40,7 +39,7 @@ export default function Post({
                         <Link href={`/profile/${result?.user?.slug}`}>
                             <b>{result?.user?.fullName}</b>
                         </Link>
-                        <CreatedAt createdAt={result?.createdAt} />
+                        <CreatedAt time={result.createdAt} />
                     </div>
                 </div>
                 <div style={{ padding: "5px 5px" }}>

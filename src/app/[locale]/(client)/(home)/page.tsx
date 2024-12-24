@@ -8,6 +8,7 @@ import { Grid } from '@mui/material';
 import { getPurchased } from '@/services/payment';
 import { TListPayment } from '@/types/payment';
 import PurchasedCard from '@/app/[locale]/(client)/(home)/components/PurchasedCard';
+import formatTime from '@/helpers/formatTime';
 
 export const metadata: Metadata = {
     title: "Master Pics - Home",
@@ -35,6 +36,10 @@ export default async function HomePage() {
     }
 
     const result = await getListPost(1)
+    result.data.posts.map((item) => {
+        item.createdAt = formatTime(item.createdAt.toString())
+        return item
+    })
 
     return (
         <div

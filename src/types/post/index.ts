@@ -11,7 +11,7 @@ export type TPost = {
     watermark: string,
     quantityBuy: number,
     deleted: boolean,
-    createdAt: string,
+    createdAt: string | [number, string],
     updatedAt: string,
     slug: string,
     user: {

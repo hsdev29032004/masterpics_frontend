@@ -5,12 +5,16 @@ import jwt, { JwtPayload } from "jsonwebtoken"
 import { getListFavorite } from "@/services/favorite";
 import Post from "@/app/[locale]/(client)/post/components/Post";
 import { formatNumber2 } from "@/helpers/formatNumber";
+import formatTime from "@/helpers/formatTime";
 
 export default async function Detail({params}: {params: {slug: string}}) {
     const result = await getDetailPostBySlug(params.slug)
-    const formattedPrice = formatNumber2(result.data?.price)
     if (!result.data) return <p style={{marginTop: "80px", textAlign: "center"}}>404 NOT FOUND</p>
 
+    
+    const formattedPrice = formatNumber2(result.data?.price)
+    result.data.createdAt = formatTime(result.data?.createdAt.toString())
+    
     const cookieStore = cookies()
     const token = cookieStore.get("access_token")?.value
     let decodedToken: any

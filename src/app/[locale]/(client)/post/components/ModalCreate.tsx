@@ -100,7 +100,10 @@ export default function ModalCreatePost({ avatar }: { avatar: string }) {
                 }}
                 onClick={handleOpen}
             >
-                <Avatar src={avatar} alt="" />
+                <Avatar
+                    src={avatar !== "dfAvatar.jpg" ? avatar : `/images/${avatar}`}
+                    alt=""
+                />
                 <Input
                     className='bg-second'
                     sx={{

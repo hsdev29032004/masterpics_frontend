@@ -7,15 +7,16 @@ import { useState, useEffect, useRef } from "react"
 import { getListPost } from "@/services/post"
 import PostSkeleton from "@/app/[locale]/(client)/post/components/Skeleton"
 import ModalCreatePost from "@/app/[locale]/(client)/post/components/ModalCreate"
+import formatTime from "@/helpers/formatTime"
 
 export default function Home({
     data,
     decodedToken,
-    listFavor
+    listFavor,
 }: {
     data: TListPost
     decodedToken: any,
-    listFavor: any
+    listFavor: any,
 }) {
     const [totalPage, setTotalPage] = useState<number>(data.totalPage)
     const [currentPage, setCurrentPage] = useState<number>(1)
