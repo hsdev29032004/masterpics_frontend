@@ -27,3 +27,7 @@ export type TEditPost = {
     description: string,
     price: number
 }
+
+export type TCreatePost = TEditPost & {
+    image: File
+}

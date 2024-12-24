@@ -6,6 +6,7 @@ import { Grid } from "@mui/material"
 import { useState, useEffect, useRef } from "react"
 import { getListPost } from "@/services/post"
 import PostSkeleton from "@/app/[locale]/(client)/post/components/Skeleton"
+import ModalCreatePost from "@/app/[locale]/(client)/post/components/ModalCreate"
 
 export default function Home({
     data,
@@ -64,6 +65,7 @@ export default function Home({
 
     return (
         <>
+            <ModalCreatePost avatar={decodedToken?.avatar}/>
             {postsRef.current.map((value, key) => {
                 const formattedPrice = formatNumber2(value.price)
                 return (

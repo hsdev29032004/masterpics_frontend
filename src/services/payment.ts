@@ -16,7 +16,7 @@ export const buy = async (idPost: string, dispatch: Dispatch): Promise<TResponse
         }else{
             return refresh
         }
-    }else{
+    }else if(result.status == "success"){
         const refresh = await refreshToken()
         if(refresh.status == "success"){
             dispatch(setUser(refresh.data.user))

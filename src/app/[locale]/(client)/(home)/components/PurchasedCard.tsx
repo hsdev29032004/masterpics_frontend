@@ -1,7 +1,6 @@
 "use client"
 import { TListPayment } from "@/types/payment";
 import { Button } from "@mui/material";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import PurchasedPic from "./PurchasePic";
 
@@ -17,7 +16,7 @@ export default function PurchasedCard({ purchasedPic }: { purchasedPic: TListPay
             >
                 {hasPurchasedPics ? (
                     purchasedPic.slice(0, 9).map((item) => (
-                        <PurchasedPic image={item.image}/>
+                        <PurchasedPic key={item._id} image={item.image}/>
                     ))
                 ) : (
                     <div style={{ display: "flex", justifyContent: "center", width: "100%", margin: "15px 0" }}>

@@ -30,9 +30,6 @@ export const _post = async (path: string, data?: any) => {
     const isFormData = data instanceof FormData;
     const options: TOption = {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
         credentials: 'include',
         body: data
     };

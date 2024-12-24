@@ -42,3 +42,17 @@ export const getListPost = async (page: number = 1): Promise<TResponse<TListPost
     const result: TResponse<TListPost> = await response.json()
     return result
 }
+
+export const createPost = async (data: FormData): Promise<TResponse<TPost>> => {
+    const response = await _post(`/posts`, data)
+    const result: TResponse<TPost> = await response.json()
+    if (response.status === 401) {
+        const refresh = await refreshToken()
+        if (refresh.status == "success") {
+            return createPost(data)
+        } else {
+            return refresh
+        }
+    }
+    return result
+}

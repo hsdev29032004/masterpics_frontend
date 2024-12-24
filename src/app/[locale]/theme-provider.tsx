@@ -2,7 +2,7 @@
 import { CssBaseline, Experimental_CssVarsProvider, experimental_extendTheme } from '@mui/material';
 
 
-const theme = experimental_extendTheme({
+export const theme = experimental_extendTheme({
     breakpoints: {
         values: {
             xs: 0,

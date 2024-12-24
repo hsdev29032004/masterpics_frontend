@@ -3,6 +3,7 @@ import { checkAccessToken, refreshToken } from "@/services/auth";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/stores/userSlice";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function CheckLogin({
     children,
@@ -26,7 +27,9 @@ export default function CheckLogin({
         }
     }
 
-    checkLogin()
+    useEffect(() => {
+        checkLogin()
+    }, [])
 
     return <>{children}</>
 }

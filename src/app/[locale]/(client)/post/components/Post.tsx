@@ -17,7 +17,7 @@ export default function Post({
     result: TPost;
     decodedToken: any;
     formattedPrice: string;
-    listFavor: any;
+    listFavor?: any;
 }) {
     const [isDialogOpen, setIsDialogOpen] = useState(false)
 
